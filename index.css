@@ -1,0 +1,137 @@
+html, body {
+  height: 100%;
+  margin: 0;
+  background-color: #0d021a;
+  color: #c0b4f8;
+  font-family: 'Roboto Mono', monospace;
+  font-size: 16px;
+}
+
+body {
+  overflow: hidden;
+}
+
+body.dragging {
+  cursor: grabbing;
+}
+
+body.dragging * {
+  user-select: none;
+  pointer-events: none;
+}
+
+#vignette {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  box-shadow: inset 0 0 20vmin 5vmin #000;
+  z-index: -2;
+  pointer-events: none;
+}
+
+#scanlines {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: repeating-linear-gradient(
+    0deg,
+    rgba(0, 0, 0, 0.5),
+    rgba(0, 0, 0, 0.5) 1px,
+    transparent 1px,
+    transparent 2px
+  );
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.1;
+}
+
+.hud-border {
+  border: 1px solid #6c52ff;
+  box-shadow: inset 0 0 5px #6c52ff, 0 0 5px #6c52ff;
+  padding: 1vmin;
+  background-color: rgba(13, 2, 26, 0.7);
+  backdrop-filter: blur(5px);
+}
+
+.mute-controls {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1vmin;
+    margin-top: 1vmin;
+}
+.mute-button {
+    background: rgba(13, 2, 26, 0.5);
+    border: 1px solid #6c52ff;
+    color: #c0b4f8;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
+    user-select: none;
+    transition: all 0.1s;
+    padding: 0.5vmin;
+    font-size: 1.3vmin;
+    text-align: center;
+    font-family: 'Roboto Mono', monospace;
+}
+.mute-button:hover {
+    background: rgba(108, 82, 255, 0.3);
+    color: #fff;
+}
+.mute-button.active {
+    background: #ff00a0;
+    color: #fff;
+    box-shadow: 0 0 10px #ff00a0;
+}
+.fx-pad {
+  background: #101012;
+  border: 0.3vmin solid #4a3c99;
+  border-radius: 0.5vmin;
+  color: #c0b4f8;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-transform: uppercase;
+  user-select: none;
+  transition: all 0.1s ease-out;
+  padding: 0.5vmin;
+  font-size: 1.4vmin;
+  text-align: center;
+  font-family: 'Roboto Mono', monospace;
+  box-shadow:
+    inset 0 0 0.8vmin rgba(0, 0, 0, 0.8),
+    0 0 0.5vmin #4a3c99;
+}
+.fx-pad:hover {
+  color: #fff;
+  border-color: #9c82ff;
+  box-shadow:
+    inset 0 0 0.8vmin rgba(0, 0, 0, 0.8),
+    0 0 1.2vmin #9c82ff,
+    0 0 2vmin rgba(156, 130, 255, 0.4);
+  transform: scale(1.02);
+}
+.fx-pad:active {
+  transform: scale(0.98);
+  box-shadow: inset 0 0 1.5vmin #00f5d4;
+  border-color: #00f5d4;
+  transition-duration: 0.05s;
+}
+.fx-pad.active {
+  background: #101012;
+  color: #fff;
+  font-weight: bold;
+  text-shadow: 0 0 5px #fff, 0 0 10px #00f5d4;
+  border-color: #00f5d4;
+  box-shadow:
+    inset 0 0 0.8vmin rgba(0,0,0,0.8),
+    0 0 1.5vmin #00f5d4,
+    0 0 3vmin #00f5d4;
+  transform: scale(1.02);
+}
